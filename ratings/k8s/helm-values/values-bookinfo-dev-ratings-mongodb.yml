@@ -1,0 +1,9 @@
+image:
+  tag: "4.4.1-debian-10-r12" # overrides default version value
+auth:
+  enabled: true
+  rootPassword: "SECUREROOTPASS"
+  username: "ratings"
+  password: "SECUREPASS"
+  database: "ratings"
+initdbScriptsConfigMap: "bookinfo-dev-ratings-mongodb-initdb"

@@ -1,0 +1,18 @@
+ratings:
+  healthCheckPath: "/health"
+  image: registry.demo.opsta.co.th/training30/bookinfo/ratings
+  imagePullSecrets: registry-bookinfo
+  namespace: training30-bookinfo-dev
+  port: 8080
+  replicas: 1
+  tag: dev
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  host: bookinfo.dev.opsta.co.th
+  path: "/training30/ratings(/|$)(.*)"
+  serviceType: ClusterIP
+extraEnv:
+  SERVICE_VERSION: v2
+  MONGO_DB_URL: mongodb://ratings:SECUREPASS@bookinfo-dev-ratings-mongodb:27017/ratings
